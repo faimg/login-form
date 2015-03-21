@@ -5,22 +5,34 @@ var Login = {
 	},
 
 	setForm: function() {
-		var form = document.getElementById('frmLogin');
-		if(form) {
-			
-			var ouvinteRaul = function(event){
-				console.log('Hey Raul, the form was submitted!');
-				event.preventDefault();
-			};
+		var form = document.getElementById('frmLogin')
 
-			var ouvinteNatalia = function(event) {
-				console.log('Hi Natália! The form was submitted!');
+    if(form) {
+			form.addEventListener('submit', function(event){
+				Login.validateForm(form);
 				event.preventDefault();
-			};
-
-			form.addEventListener('submit', ouvinteRaul);
-			form.addEventListener('submit', ouvinteNatalia);
+			});
 		}		
+	},
+
+	validateForm: function(form) {
+		if(!Login.validateElement(form.username)) return false;
+		if(!Login.validateElement(form.password)) return false;
+		alert("Form submitted successfully!");
+	},
+
+	validateElement: function(element) {
+		var elementGroup = $(element)
+		.parents('.control-group');
+		
+		if(element.value === "") {
+			$(elementGroup).addClass('error');
+			element.focus();
+			return false;
+		}
+
+		$(elementGroup).removeClass('error');
+		return true;
 	}
 
 };
