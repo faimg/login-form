@@ -2,10 +2,52 @@
 <html>
 <head>
 
-<title></title>
+<title>HTML Form Login</title>
+
+<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" href="css/style.css" />
 
 </head>
 <body>
+
+<form id="frmLogin">
+	
+	<fieldset>
+		<legend>Authentication</legend>
+		
+		<div class="control-group">
+			<label for="username" class="control-label">
+				Username
+				<input type="text" 
+				 id="username" 
+				 class="input-block-level" />
+			</label>
+		</div>
+		
+		<div class="control-group">
+			<label for="password" class="control-label">
+				Password
+				<input type="password" 
+				 id="password"
+				 class="input-block-level" />
+			</label>
+		</div>
+
+		<label for="rememberMe" class="checkbox">
+			<input type="checkbox" id="rememberMe" />
+			Remember Me
+		</label>
+
+		<input type="submit" 
+		 value="Sign in" 
+		 class="btn btn-primary" />
+	</fieldset>
+</form>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/Cookie.js"></script>
+
 
 </body>
 </html>
