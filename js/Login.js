@@ -2,6 +2,8 @@ var Login = {
 
 	init: function() {
 		Login.setForm();
+		Login.setRememberMe();
+		Login.retrieveRememberedUsername();
 	},
 
 	setForm: function() {
@@ -33,6 +35,30 @@ var Login = {
 
 		$(elementGroup).removeClass('error');
 		return true;
+	},
+
+	setRememberMe: function() {
+		var inputCheckbox = document.getElementById('rememberMe');
+		inputCheckbox.addEventListener('click', function(event){
+			if(inputCheckbox.checked) {
+				var username = $('#username').val();
+				if(username) {
+					Cookie.set('username', username, 3);
+				}
+			}
+			else {
+				Cookie.unset('username');
+			}
+		});
+	},
+
+	retrieveRememberedUsername: function() {
+		var username = Cookie.get('username');
+		if(username) {
+			$('#username').val(username);
+			//$('#rememberMe').attr('checked', true);
+			document.getElementById('rememberMe').checked = true;
+		}
 	}
 
 };
